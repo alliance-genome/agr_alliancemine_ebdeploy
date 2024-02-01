@@ -5,3 +5,5 @@ eb-init:
 eb-create:
 	eb create stage-alliancemine --region=us-east-1 --cname="stage-alliancemine" --elb-type classic --timeout 30
 
+eb-deploy:
+	eb deploy stage-alliancemine --timeout 30
