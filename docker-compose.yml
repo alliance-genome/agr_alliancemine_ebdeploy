@@ -16,7 +16,7 @@ services:
       - .env
 
   solr:
-    container_name: agr.stage.intermine.solr.server
+    container_name: agr.stage.alliancemine.solr.server
     image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_intermine_solr_env:stage
     logging:
       driver: gelf
@@ -30,7 +30,7 @@ services:
       - .env
 
   tomcat:
-    container_name: agr.stage.intermine.tomcat.server
+    container_name: agr.stage.alliancemine.tomcat.server
     image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_intermine_tomcat_env:stage
     logging:
       driver: gelf
@@ -42,6 +42,21 @@ services:
       - intermine
     env_file:
       - .env
+
+  postgres:
+    container_name: agr.stage.alliancemine.postgres.server
+    image: intermine/postgres:latest
+    user: ${UID:-1000}:${GID:-1000}
+    logging:
+      driver: gelf
+      options:
+        gelf-address: 'udp://logs.alliancegenome.org:12201'
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - intermine
 
 networks:
   # The presence of these objects is sufficient to define them
