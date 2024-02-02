@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   bluegenes:
-    container_name: agr.stage.bluegenes.server
+    container_name: agr.stage.alliancemine.bluegenes.server
     image: intermine/bluegenes:latest
     logging:
       driver: gelf
