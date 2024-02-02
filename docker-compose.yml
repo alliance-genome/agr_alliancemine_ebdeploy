@@ -46,17 +46,34 @@ services:
   postgres:
     container_name: agr.stage.alliancemine.postgres.server
     image: intermine/postgres:latest
-    user: ${UID:-1000}:${GID:-1000}
     logging:
       driver: gelf
       options:
         gelf-address: 'udp://logs.alliancegenome.org:12201'
     ports:
       - "5432:5432"
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
     networks:
       - intermine
+
+  loaddata:
+    depends_on:
+      bluegenes:
+      solr:
+      tomcat:
+      postgres:
+    container_name: agr.stage.alliancemine.loaddata
+    image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_intermine_builder_env:stage
+    command: ./load_db_build_solr
+    logging:
+      driver: gelf
+      options:
+        gelf-address: 'udp://logs.alliancegenome.org:12201'
+    volumes:
+       - db_backup_volume:/root/data
+    networks:
+      - intermine
+    env_file:
+      - .env
 
 networks:
   # The presence of these objects is sufficient to define them
