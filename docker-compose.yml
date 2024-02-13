@@ -45,7 +45,7 @@ services:
 
   postgres:
     container_name: agr.stage.alliancemine.postgres.server
-    image: intermine/postgres:latest
+    image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_intermine_postgres_env:stage
     logging:
       driver: gelf
       options:
