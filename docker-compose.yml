@@ -57,10 +57,8 @@ services:
 
   loaddata:
     depends_on:
-      bluegenes:
-      solr:
-      tomcat:
       postgres:
+        condition: service_started
     container_name: agr.stage.alliancemine.loaddata
     image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_intermine_builder_env:stage
     command: ./load_db_build_solr
