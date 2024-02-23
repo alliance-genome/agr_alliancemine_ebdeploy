@@ -1,0 +1,19 @@
+branch-defaults:
+  main:
+    environment: stage-alliancemine
+  production:
+    environment: production-alliancemine
+global:
+  application_name: alliancemine
+  branch: null
+  default_ec2_keyname: null
+  default_platform: Docker
+  default_region: us-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application
