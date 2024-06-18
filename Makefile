@@ -10,3 +10,5 @@ eb-create-prod:
 
 eb-deploy:
 	eb deploy stage-alliancemine --timeout 30
+
+	
