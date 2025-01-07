@@ -3,7 +3,7 @@ version: "3.2"
 services:
   bluegenes:
     container_name: agr.stage.alliancemine.bluegenes.server
-    image: intermine/bluegenes:latest
+    image: 100225593120.dkr.ecr.us-east-1.amazonaws.com/agr_bluegenes:stage
     logging:
       driver: gelf
       options:
